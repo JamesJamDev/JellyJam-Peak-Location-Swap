@@ -12,8 +12,8 @@ namespace JellyJamTinyPeakMod
     [BepInPlugin(modGUID, modName, modVersion)]
     public class ModBase : BaseUnityPlugin
     {
-        private const string modGUID = "JellyJam.TinyPeakMod";
-        private const string modName = "JellyJamTinyPeakMod";
+        private const string modGUID = "JellyJam.LocationSwapMod";
+        private const string modName = "JellyJamLocationSwapMod";
         private const string modVersion = "1.0.0.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
@@ -31,7 +31,7 @@ namespace JellyJamTinyPeakMod
 
             mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
 
-            mls.LogInfo("The JellyJamTinyPeakMod has started");
+            mls.LogInfo("The JellyJamLocationSwapMod has started");
 
             harmony.PatchAll();
         }
