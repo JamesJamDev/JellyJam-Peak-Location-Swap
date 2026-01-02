@@ -28,8 +28,15 @@ public class RandomDamageTeleport : MonoBehaviour
 
         if (!PhotonNetwork.IsMasterClient) return;
 
-        // Find all other active characters
-        var others = Character.AllCharacters.Where(c => c != GetComponent<Character>()).ToArray();
+        var selfChar = GetComponent<Character>();
+
+        var others = Character.AllCharacters
+            .Where(c => c != null)
+            .Where(c => c != selfChar)
+            .Where(c => c.data != null)
+            .Where(c => !c.data.dead) 
+            .ToArray();
+
         if (others.Length == 0) return;
 
         // Pick a random target
@@ -42,10 +49,15 @@ public class RandomDamageTeleport : MonoBehaviour
     private void SwapWith(Character target)
     {
         var selfChar = GetComponent<Character>();
+
+        // Extra checks to make sure we dont swap with fully dead players
         if (selfChar == null || target == null) return;
 
+        if (selfChar.data.dead || target.data.dead) return;
+
+
         Vector3 selfPos = selfChar.Center;
-        Vector3 targetPos = target.Center + Vector3.forward * 2f;
+        Vector3 targetPos = target.Center;
 
         // Teleport both players
         selfChar.photonView.RPC("WarpPlayerRPC", RpcTarget.All, targetPos, false);
