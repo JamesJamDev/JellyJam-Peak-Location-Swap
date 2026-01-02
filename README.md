@@ -1,7 +1,7 @@
 **MOD INFO**
-Name: JellyJamPeakDamageSwapMod
-Version: 1.0.0
-Game: PEAK
+*Name:* JellyJamPeakDamageSwapMod
+*Version:* 1.0.0
+*Game:* PEAK
 
 **MOD FEATURES**
 - Players with the mod will **swap positions with another modded player when taking damage**
