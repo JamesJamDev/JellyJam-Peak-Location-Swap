@@ -1,6 +1,9 @@
 **MOD INFO**
+
 *Name:* JellyJamPeakDamageSwapMod
+
 *Version:* 1.0.0
+
 *Game:* PEAK
 
 **MOD FEATURES**
