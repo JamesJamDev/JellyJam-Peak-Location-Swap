@@ -1,6 +1,6 @@
 ﻿using BepInEx;
-using HarmonyLib;
 using BepInEx.Logging;
+using HarmonyLib;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,9 @@ namespace JellyJamLocationSwapPEAKMod
             }
 
             mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
+
+            // Initialize configuration
+            SwapDamageConfig.Initialize(this);
 
             mls.LogInfo("The JellyJamLocationSwapMod has started");
 
