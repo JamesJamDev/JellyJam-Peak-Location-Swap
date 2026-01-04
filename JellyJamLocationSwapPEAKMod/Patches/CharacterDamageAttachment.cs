@@ -51,7 +51,8 @@ public class RandomDamageTeleport : MonoBehaviour
     {
         // Respect global enable and minimum
         if (!JellyJamLocationSwapPEAKMod.SwapDamageConfig.IsEnabled.Value) return;
-        if (value < JellyJamLocationSwapPEAKMod.SwapDamageConfig.MinimumAmount.Value) return;
+        Debug.Log("Status added: " + status + " with value: " + value);
+        if (value / 1000 < JellyJamLocationSwapPEAKMod.SwapDamageConfig.MinimumAmount.Value) return;
 
         // Respect per-status toggles
         if (status == CharacterAfflictions.STATUSTYPE.Hunger && !JellyJamLocationSwapPEAKMod.SwapDamageConfig.ToggleHunger.Value) return;
@@ -82,7 +83,11 @@ public class RandomDamageTeleport : MonoBehaviour
                 .Where(c => !c.data.isCarried);
 
         var others = candidates.ToArray();
-        if (others.Length == 0) return;
+        if (others.Length == 0)
+        {
+            Debug.Log("Tried to swap, but no other player found");
+            return;
+        }
 
         var targetCharacter = others[UnityEngine.Random.Range(0, others.Length)];
 
